@@ -1,38 +1,35 @@
-from entities.likes import likes_by_year
-from entities.comments import comments_by_year
-from entities.stories import stories_by_year
-from entities.connections import connections_by_year
-from entities.inbox import inbox_by_year
+from parsers.likes import LikesParser
+from parsers.comments import CommentsParser
+from parsers.stories import StoriesParser
+from parsers.connections import ConnectionsParser
+from parsers.inbox import InboxParser
 
 print('Welcome to Your Instagram Year in Review!!!')
-print('Enter a year (otherwise will default to 2020)')
-
+print('Enter the year (default 2020)')
+print('-> ', end='')
 try:
     year = str(int(input()))
 except:
     year = '2020'
 last_year = str(int(year) - 1)
 
-print('In {0}'.format(year))
-connections_by_year(year)
-print('\n')
+print('Enter your IG username:')
+print('-> ', end='')
+try:
+    username = input()
+except:
+    username = ''
 
+Parsers = [
+    ConnectionsParser,
+    CommentsParser,
+    LikesParser,
+    StoriesParser,
+    InboxParser
+]
 
-print('In {0}'.format(year))
-likes_by_year(year)
-print('\n')
-
-
-print('In {0}'.format(year))
-comments_by_year(year)
-print('\n')
-
-
-print('In {0}'.format(year))
-stories_by_year(year)
-print('\n')
-
-
-print('In {0}'.format(year))
-inbox_by_year(year)
-print('')
+for Parser in Parsers:
+    parser = Parser(username=username)
+    parser.process(year=year)
+    parser.print()
+    print('\n')
