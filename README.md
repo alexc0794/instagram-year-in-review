@@ -32,7 +32,7 @@ _5-10 minutes_
 3. Open your `part_1` unzipped folder. Move all the contents of `part_1` to the `instagram/data` folder.
 4. [Optional, for Stories data] Open the rest of the unzipped folders `part_2` -> `part_z` and move the `media.json` files into `instagram/data`. To avoid file name collisions, rename them to `media1.json`, `media2.json`, and so on.
 
-Now, the `data` folder should look something like this. 
+Now, the `data` folder should look something like this.
 
 ![instagram/data folder](images/instagram_data.png)
 
@@ -55,3 +55,9 @@ $ python3 .
   Welcome to Your Instagram Year in Review!!!
   ...
 ```
+
+## Visualizations
+
+If you would like to explore different visualizations, look for files in this repository named `visualization_*.py`. You can run them with `python3 visualization_<filename>.py`. This will start a server running locally. The console will print the local address at which the server is running, so click on it (i.e. `http://127.0.0.1:8050/`). You should see a web page like so.
+
+![visualization of stories](images/visualization_stories.png)
