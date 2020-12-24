@@ -11,6 +11,7 @@ _5 minutes, (request may take up to 48 hours)_
 Instructions to request https://www.facebook.com/help/instagram/181231772500920 or https://www.instagram.com/download/request/
 
 When Instagram is finished preparing your data, you will receive an email allowing you access to download your data in the form of several .zip files. If you have more data, you will have more files to download, and vice versa. Once you have unzipped the files, your file explorer will look something like this.
+
 ![Unzipped files](images/unzipped_data.png)
 
 ### Install Python
@@ -31,7 +32,9 @@ _5-10 minutes_
 3. Open your `part_1` unzipped folder. Move all the contents of `part_1` to the `instagram/data` folder.
 4. [Optional, for Stories data] Open the rest of the unzipped folders `part_2` -> `part_z` and move the `media.json` files into `instagram/data`. To avoid file name collisions, rename them to `media1.json`, `media2.json`, and so on.
 
-Now, the `data` folder should look something like this. ![instagram/data folder](images/instagram_data.png)
+Now, the `data` folder should look something like this. 
+
+![instagram/data folder](images/instagram_data.png)
 
 ### Run the Script
 
