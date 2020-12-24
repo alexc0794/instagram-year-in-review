@@ -4,9 +4,8 @@ import re
 from dateutil.parser import parse
 from datetime import datetime
 
-
 def comments_by_year(year, number = 5):
-    with open(os.path.dirname(__file__) + '/data/comments.json') as file:
+    with open(os.getcwd() + '/data/comments.json') as file:
         data = json.load(file)
 
     assert 'media_comments' in data

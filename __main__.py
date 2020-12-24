@@ -1,8 +1,8 @@
-from likes import likes_by_year
-from comments import comments_by_year
-from stories import stories_by_year
-from connections import connections_by_year
-from inbox import inbox_by_year
+from entities.likes import likes_by_year
+from entities.comments import comments_by_year
+from entities.stories import stories_by_year
+from entities.connections import connections_by_year
+from entities.inbox import inbox_by_year
 
 print('Welcome to Your Instagram Year in Review!!!')
 print('Enter a year (otherwise will default to 2020)')

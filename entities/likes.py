@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 def likes_by_year(year, number = 10):
-    with open(os.path.dirname(__file__) + '/data/likes.json') as file:
+    with open(os.getcwd() + '/data/likes.json') as file:
         data = json.load(file)
 
     assert 'media_likes' in data

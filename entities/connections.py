@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 def connections_by_year(year):
-    with open(os.path.dirname(__file__) + '/data/connections.json') as file:
+    with open(os.getcwd() + '/data/connections.json') as file:
         data = json.load(file)
 
     assert 'followers' in data
