@@ -40,8 +40,6 @@ Now, the `data` folder should look something like this.
 
 _1-5 minutes_
 
-If you do not have python3, for the following steps you may replace `python` for `python3` and `pip` for `pip3`.
-
 1. Open your command line and navigate to the `instagram` project folder.
 2. Run `pip3 install -r requirements.txt`. This installs package dependences.
 3. Run `python3 .`. This runs the `__main__.py` script. You should see the welcome message.
