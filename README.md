@@ -14,11 +14,11 @@ When Instagram is finished preparing your data, you will receive an email allowi
 
 ![Unzipped files](images/unzipped_data.png)
 
-### Install Python
+### Install Python3
 
 _0-10 minutes_
 
-You likely already have Python installed by default. To check on MacOS, follow [these instructions](https://realpython.com/installing-python/#how-to-check-your-python-version-on-a-mac).
+You likely already have Python3 installed by default. **Be sure to use `python3` not `python`.** To check on MacOS, follow [these instructions](https://realpython.com/installing-python/#how-to-check-your-python-version-on-a-mac).
 If not, follow [these steps](https://realpython.com/installing-python/).
 
 ## Steps
@@ -61,3 +61,5 @@ $ python3 .
 If you would like to explore different visualizations, look for files in this repository named `visualization_*.py`. You can run them with `python3 visualization_<filename>.py`. This will start a server running locally. The console will print the local address at which the server is running, so click on it (i.e. `http://127.0.0.1:8050/`). You should see a web page like so.
 
 ![visualization of stories](images/visualization_stories.png)
+
+![visualization of inbox](images/visualization_inbox.png)

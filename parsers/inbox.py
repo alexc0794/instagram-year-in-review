@@ -90,13 +90,13 @@ class InboxParser(Parser):
             messages += messages_by_type[message_type]
         return messages
 
-    def get_users_by_message_disparity(self, sort_by_user_sent: bool):
+    def get_users_by_message_disparity(self, sort_by_you_sent: bool=True, min_message_threshold: int=10):
         user_to_percentage_you_sent = {}
         users = []
         for user in self.users:
             messages = self.get_all_messages_from_user(user=user)
             total = len(messages)
-            if total < 1:
+            if total < min_message_threshold:
                 continue
 
             total_you_sent = 0
@@ -110,8 +110,11 @@ class InboxParser(Parser):
             users.append(user)
             user_to_percentage_you_sent[user] = int(percentage_you_sent * 100)
 
-        users.sort(key=lambda user: user_to_percentage_you_sent.get(user, 0), reverse=sort_by_user_sent)
+        users.sort(key=lambda user: user_to_percentage_you_sent.get(user, 0), reverse=sort_by_you_sent)
         return users, user_to_percentage_you_sent
+
+    def cleanup_username(self, username: str) -> str:
+        return '_'.join(username.split('_')[0:-1])
 
     def print(self, number: int=5) -> None:
         print('You messaged a total of {0} people'.format(len(self.users)))
@@ -126,20 +129,20 @@ class InboxParser(Parser):
             print('You exchanged the most {0} with these people'.format(message_type.value))
             users = self.get_users_by_message_frequency(message_type)
             for user in users[:number]:
-                print('  {0} {1} {2}'.format('_'.join(user.split('_')[0:-1]), len(self.user_directory_to_message_types.get(user, {}).get(message_type.value, [])), message_type.value))
+                print('  {0} {1} {2}'.format(self.cleanup_username(username=user), len(self.user_directory_to_message_types.get(user, {}).get(message_type.value, [])), message_type.value))
             print('')
 
         if (not self.username):
             return
 
         print('There were some people that weren\'t very talktative')
-        users_by_message_disparity, user_to_percentage_you_sent = self.get_users_by_message_disparity(True)
+        users_by_message_disparity, user_to_percentage_you_sent = self.get_users_by_message_disparity(sort_by_you_sent=True)
         for user in users_by_message_disparity[:number]:
-            print('  you sent {1}% of the messages to {0}'.format('_'.join(user.split('_')[0:-1]), user_to_percentage_you_sent[user]))
+            print('  you sent {1}% of the messages to {0}'.format(self.cleanup_username(username=user), user_to_percentage_you_sent[user]))
 
         print('')
 
         print('And there were others you weren\'t very talkative to')
-        users_by_message_disparity, user_to_percentage_you_sent = self.get_users_by_message_disparity(False)
+        users_by_message_disparity, user_to_percentage_you_sent = self.get_users_by_message_disparity(sort_by_you_sent=False)
         for user in users_by_message_disparity[:number]:
-            print('  you sent {1}% of the messages to {0}'.format('_'.join(user.split('_')[0:-1]), user_to_percentage_you_sent.get(user, 0)))
+            print('  you sent {1}% of the messages to {0}'.format(self.cleanup_username(username=user), user_to_percentage_you_sent.get(user, 0)))
